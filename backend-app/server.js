@@ -48,6 +48,27 @@ app.delete('/api/zadaci/:id', (req, res) => {
   zadaci = zadaci.filter(z => z.id !== id);
   res.status(200).json({ message: 'Zadatak uspješno obrisan' });
 });
+// 4. PATCH - Izmijeni naslov i/ili status
+app.patch('/api/zadaci/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const zadatak = zadaci.find(z => z.id === id);
+  if (!zadatak) {
+    return res.status(404).json({ error: 'Zadatak nije pronađen' });
+  }
+
+  const { naslov, zavrseno } = req.body;
+  if (naslov !== undefined) {
+    if (!naslov.trim()) {
+      return res.status(400).json({ error: 'Naslov ne smije biti prazan' });
+    }
+    zadatak.naslov = naslov.trim();
+  }
+  if (zavrseno !== undefined) {
+    zadatak.zavrseno = Boolean(zavrseno);
+  }
+
+  res.json(zadatak);
+});
 // --- POSLUŽIVANJE VUE FRONTENDA (Za produkciju na Renderu) ---
 app.use(express.static(path.join(__dirname, 'public')));
 
