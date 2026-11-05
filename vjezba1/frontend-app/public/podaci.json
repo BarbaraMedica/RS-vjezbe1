@@ -1,0 +1,64 @@
+{
+  "sekvencijalno": {
+    "zadaci": [
+      {
+        "id": 1,
+        "naslov": "Zadatak 1"
+      },
+      {
+        "id": 2,
+        "naslov": "Zadatak 2"
+      },
+      {
+        "id": 3,
+        "naslov": "Zadatak 3"
+      }
+    ],
+    "zadatak": {
+      "zadatak_id": 1,
+      "naslov": "Naslov zadatka"
+    },
+    "korisnici": [
+      {
+        "id": 1,
+        "ime": "Ana Horvat"
+      },
+      {
+        "id": 2,
+        "ime": "Marko Kovač"
+      }
+    ],
+    "vrijeme": 7.07
+  },
+  "istovremeno": {
+    "zadaci": [
+      {
+        "id": 1,
+        "naslov": "Zadatak 1"
+      },
+      {
+        "id": 2,
+        "naslov": "Zadatak 2"
+      },
+      {
+        "id": 3,
+        "naslov": "Zadatak 3"
+      }
+    ],
+    "zadatak": {
+      "zadatak_id": 1,
+      "naslov": "Naslov zadatka"
+    },
+    "korisnici": [
+      {
+        "id": 1,
+        "ime": "Ana Horvat"
+      },
+      {
+        "id": 2,
+        "ime": "Marko Kovač"
+      }
+    ],
+    "vrijeme": 2.95
+  }
+}

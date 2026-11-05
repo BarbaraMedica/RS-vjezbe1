@@ -84,6 +84,25 @@
           Nema aktivnih zadataka. Dodaj novi iznad!
         </li>
       </ul>
+
+      <section v-if="podaci" class="podaci">
+        <h2>Usporedba izvođenja</h2>
+        <p>Sekvencijalno: {{ podaci.sekvencijalno.vrijeme }} s</p>
+        <p>Istovremeno: {{ podaci.istovremeno.vrijeme }} s</p>
+
+        <h3>Korisnici</h3>
+        <ul>
+          <li v-for="k in podaci.istovremeno.korisnici" :key="k.id">{{ k.ime }}</li>
+        </ul>
+
+        <h3>Zadaci</h3>
+        <ul>
+          <li v-for="z in podaci.istovremeno.zadaci" :key="z.id">{{ z.naslov }}</li>
+        </ul>
+
+        <h3>Zadatak po ID-u</h3>
+        <p>{{ podaci.istovremeno.zadatak.zadatak_id }}: {{ podaci.istovremeno.zadatak.naslov }}</p>
+      </section>
     </main>
   </div>
 </template>
@@ -196,6 +215,15 @@ const obrisiZavrsene = async () => {
 }
 
 onMounted(dohvatiZadatke)
+
+const podaci = ref(null)
+
+const ucitajPodatke = async () => {
+  const odgovor = await fetch('/podaci.json')
+  podaci.value = await odgovor.json()
+}
+
+onMounted(ucitajPodatke)
 </script>
 
 <style scoped>
